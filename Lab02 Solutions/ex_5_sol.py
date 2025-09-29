@@ -14,7 +14,7 @@ def f5_1(L: list[int]) -> dict[int, tuple]:
     for i in range(len(L)):
         prev_val = L[i - 1]  # Previous element (wraps to last element for first position)
         next_val = L[(i + 1) % len(L)]  # Next element (wraps to first element for last position)
-        if prev_val < next_val:
+        if prev_val > next_val:
             prev_val, next_val = next_val, prev_val  # Ensure m is the smaller value and n is the larger
         if prev_val < L[i] < next_val:
             D[L[i]] = (prev_val, next_val)  # Element is between its neighbors in value
