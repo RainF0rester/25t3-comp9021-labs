@@ -27,7 +27,9 @@ def solution_6_1():
         line = ""
         for letter in range(i):
             line += next(iterator)
-        # Add the mirrored descending part (excluding the last char)
+        # [:-1] removes the last letter — because slice stops before the end index.
+        # [::-1] reverses the sequence — because a negative step means go backward.
+        # Together they make a mirrored pattern, like “ABC” → “ABCBA”.
         line += line[:-1][::-1]
         # Prepend spaces for triangle alignment
         line = " " * (n - i) + line
@@ -61,7 +63,7 @@ def solution_6_2():
         # lines.append(format(line, f"^{spaces}"))
 
     for line in lines:
-        print(line)
+        print(line.rstrip())
 
 
 def solution_6_hint_ord():
