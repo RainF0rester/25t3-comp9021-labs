@@ -170,8 +170,6 @@ def find_minimal_extensions_2(word: str) -> list[str]:
             # Skip lines that contain only whitespace
             if not line.isspace():
                 line = line.strip()  # remove trailing newline or spaces
-                if not word:
-                    continue
                 k = 0  # pointer for the pattern string 'word'
 
                 # Iterate through each letter in the current dictionary word
