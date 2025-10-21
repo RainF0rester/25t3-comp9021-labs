@@ -67,4 +67,4 @@ def f2_2(L: list[int], n: int) -> list[int]:
         return L[index] * multiplier
     
     # Generate the list using a list comprehension with our element calculation function
-    return [get_element_at_position(i) for i in range(n)] 
+    return [get_element_at_position(i) for i in range(n)]
