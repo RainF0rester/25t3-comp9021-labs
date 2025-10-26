@@ -19,9 +19,13 @@ def f3_1(L: list[list[list[int]]], n: int) -> tuple[list[list[int]], list[list[i
     """
     # First list: For each L1 in L whose length >= n,
     # collect all positive elements from those L2 in L1 whose sum > 0
-    first_list = [[e for L2 in L1 if sum(L2) > 0
-                     for e in L2 if e > 0
-                 ] for L1 in L if len(L1) >= n
+    first_list = [
+                   [
+                   e
+                   for L2 in L1 if sum(L2) > 0
+                   for e in L2 if e > 0
+                 ]
+                   for L1 in L if len(L1) >= n
                 ]
     
     # Second list: For each L1 in L whose length >= n,
