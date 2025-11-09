@@ -1,7 +1,7 @@
 from collections import defaultdict
 from math import sqrt
 
-def prime_factors_of(n: int) -> None:
+def prime_factors_of_1(n: int) -> None:
     """
     Prints the prime factorization of a given natural number n.
 
@@ -82,3 +82,47 @@ def prime_factors_of(n: int) -> None:
             for (factor, e) in factors.items()
         )
     )
+
+
+def prime_factors_of_2(n):
+    # If n < 2, there is no prime factorization to print.
+    if n < 2:
+        return
+
+    a = n              # Keep the original value for the final print.
+    b = 2              # Current trial divisor (start at 2).
+    factors = []       # Will store (prime, exponent) pairs in ascending order.
+
+    # Trial division: try factors up to and including sqrt(n).
+    while b * b <= n:
+        k = 0          # Exponent counter for the current factor b.
+
+        # If b divides n, divide n by b repeatedly and count how many times.
+        if n % b == 0:
+            while n % b == 0:
+                n //= b
+                k += 1
+            factors.append((b, k))  # Record the prime factor and its exponent.
+
+        # Move to the next candidate factor:
+        # after testing 2, test only odd numbers (3, 5, 7, ...).
+        if b == 2:
+            b = 3
+        else:
+            b += 2
+
+    # If n > 1 here, then n itself is a prime factor (the last one).
+    if n > 1:
+        factors.append((n, 1))
+
+    # Build the pieces like "p" or "p^e" (only show exponent if > 1),
+    # and join them with " x " in ascending order of p.
+    parts = []
+    for p, e in sorted(factors):
+        if e == 1:
+            parts.append(f"{p}")
+        else:
+            parts.append(f"{p}^{e}")
+
+    # Print in the required format: "a = 2 x 3^2", etc.
+    print(f"{a} = " + " x ".join(parts))
